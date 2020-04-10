@@ -19,12 +19,23 @@ namespace WavelengthTheGame.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseCosmos(_dbConnectionOptions.HostUri, _dbConnectionOptions.AccountKey, _dbConnectionOptions.DatabaseName);
         
         public DbSet<CardEntity> Cards {get;set;}
+        public DbSet<RoomEntity> Rooms {get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CardEntity>()
             .ToContainer("Cards")
             .HasNoDiscriminator();
+
+            modelBuilder.Entity<RoomEntity>()
+                        .ToContainer("Rooms")
+                        .HasNoDiscriminator();
+            modelBuilder.Entity<RoomEntity>()
+                        .OwnsOne(e => e.Team1)
+                        .OwnsMany(e => e.Players);
+            modelBuilder.Entity<RoomEntity>()
+                        .OwnsOne(e => e.Team2)
+                        .OwnsMany(e => e.Players);                    
         }
     }
 }
