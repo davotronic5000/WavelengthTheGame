@@ -21,9 +21,9 @@ namespace WavelengthTheGame.Functions
         {
             try
             {
-                CosmosContext _db = new CosmosContext();
+                CosmosContext db = new CosmosContext();
                 return count != null ? 
-                new OkObjectResult(_db.Cards.Random(count.GetValueOrDefault())) : new OkObjectResult(_db.Cards);
+                new OkObjectResult(db.Cards.Random(count.GetValueOrDefault())) : new OkObjectResult(db.Cards);
             }
             catch (Exception ex)
             {
