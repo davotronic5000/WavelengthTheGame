@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+      "FrontEnd": {
+        "matchCondition": {
+          "methods": [ "GET", "POST", "HEAD", "OPTIONS", "PUT", "TRACE", "DELETE", "PATCH", "CONNECT" ],
+          "route": "/web/{*restOfPath}"
+        },
+        "backendUri": "https://wavelengththegameweb.z33.web.core.windows.net/{restOfPath}",
+        "requestOverrides": {
+        },
+        "responseOverrides": {
+          "response.headers.FUNCTION-PROXY": "true"
+        }
+      },
+      "FrontEndRedirect":{
+        "matchCondition": {
+          "methods": ["GET"],
+          "route": "/"
+        },
+        "responseOverrides": {
+          "response.statusCode": "301",
+          "response.headers.Location": "https://wavelengththegame.azurewebsites.net/web" 
+        }
+      }
+    }
+  }
+  
