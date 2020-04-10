@@ -1,5 +1,5 @@
+using System;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 using WavelengthTheGame.Entities;
 
 
@@ -11,9 +11,9 @@ namespace WavelengthTheGame.Data
         public CosmosContext()
         {
             _dbConnectionOptions = new DbConnectionOptions{
-                HostUri = ConfigurationManager.AppSettings["CosmosHostUri"],
-                AccountKey = ConfigurationManager.AppSettings["CosmosAccountKey"],
-                DatabaseName = ConfigurationManager.AppSettings["CosmosDatabaseName"]
+                HostUri = Environment.GetEnvironmentVariable("CosmosHostUri"),
+                AccountKey = Environment.GetEnvironmentVariable("CosmosAccountKey"),
+                DatabaseName = Environment.GetEnvironmentVariable("CosmosDatabaseName")
             };
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseCosmos(_dbConnectionOptions.HostUri, _dbConnectionOptions.AccountKey, _dbConnectionOptions.DatabaseName);
