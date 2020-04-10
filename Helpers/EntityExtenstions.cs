@@ -1,3 +1,4 @@
+using System.Text;
 using System.Linq;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,26 @@ namespace WavelengthTheGame.Helpers
     {
         public static string UniqueId<T>(this T entity, IEnumerable<T> existingEntities) where T : IBaseEntity
         {
-            string newId = Guid.NewGuid().ToString().GetHashCode().ToString().Substring(0,5);
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char letter;
+            string returnValue;
 
-            if (existingEntities.Count(e => e.Id.Equals(newId)) > 0)
+            for (int i = 0; i < 5; i++)
             {
-                newId = UniqueId(entity, existingEntities);
+                double number = random.NextDouble();
+                int shift = Convert.ToInt32(Math.Floor(25*number));
+                letter = Convert.ToChar(shift + 65);
+                builder.Append(letter);
+            }
+            returnValue = builder.ToString();
+
+            if (existingEntities.Count(e => e.Id.Equals(returnValue)) > 0)
+            {
+                returnValue = UniqueId(entity, existingEntities);
             }
 
-            return newId;
+            return returnValue;
         }
     }
 }
