@@ -1,3 +1,4 @@
+using System.Net;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -14,6 +15,30 @@ namespace WavelengthTheGame.Functions
 {
     public static class GameHttpTrigger
     {
+        [FunctionName("StartGameHttpTrigger")]
+        public static async Task<IActionResult> StartGame(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "{roomId}/startGame")] HttpRequest request,
+            string roomId,
+            ILogger log
+        )
+        {
+            try
+            {
+                using (CosmosContext db = new CosmosContext())
+                {
+                    RoomEntity room = db.Rooms.First(e => e.Id.Equals(roomId));
+                    room.isStarted = !room.isStarted;
+                    await db.SaveChangesAsync();
+                    return new OkObjectResult(room);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.LogError(new EventId(), ex, ex.FullMessage());
+                throw;
+            }
+        }
+
         [FunctionName("SetTargetNumberHttpTrigger")]
         public static async Task<IActionResult> SetTargetNumber(
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "{roomId}/setTarget")] HttpRequest request,

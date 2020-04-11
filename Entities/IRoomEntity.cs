@@ -12,5 +12,6 @@ namespace WavelengthTheGame.Entities
          List<RoomCardEntity> UsedCards {get;set;}
          List<RoomCardEntity> CustomCards {get;set;}
          DateTime CreatedDate {get;set;}
+         bool isStarted {get;set;}
     }
 }

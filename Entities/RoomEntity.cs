@@ -8,6 +8,7 @@ namespace WavelengthTheGame.Entities
         {
             UsedCards = new List<RoomCardEntity>();
             CustomCards = new List<RoomCardEntity>();
+            isStarted = false;
         }
         public TeamEntity Team1 {get;set;}
         public TeamEntity Team2 {get;set;}
@@ -16,5 +17,6 @@ namespace WavelengthTheGame.Entities
         public List<RoomCardEntity> UsedCards {get;set;}
         public List<RoomCardEntity> CustomCards {get;set;}
         public DateTime CreatedDate {get;set;}
+        public bool isStarted {get;set;}
     }
 }
