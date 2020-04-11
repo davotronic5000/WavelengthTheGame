@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using System;
 using Microsoft.EntityFrameworkCore;
@@ -68,6 +69,40 @@ namespace WavelengthTheGame.Functions
                 db.Rooms.Add(room);
                 await db.SaveChangesAsync();
                 return new OkObjectResult(room);
+            }
+            catch (Exception ex)
+            {
+                log.LogError(new EventId(), ex, ex.FullMessage());
+                throw;
+            }
+        }
+
+        [FunctionName("SetCurrentCardHttpTrigger")]
+        public static async Task<IActionResult> SetCurrentCard(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route="room/{roomId}/{cardId}")] HttpRequest request,
+            string roomId,
+            string cardId,
+            ILogger log
+        )
+        {
+            try
+            {
+                using (CosmosContext db = new CosmosContext()){
+                    CardEntity card =  db.Cards.First(e => e.Id.Equals(cardId));
+                    RoomEntity room =  db.Rooms.First(e => e.Id.Equals(roomId));
+                    
+                    if (room.CurrentCard != null)
+                        {
+                            room.UsedCards.Add(room.CurrentCard);
+                        }
+                
+                    room.CurrentCard = card.ToRoomCardEntity();
+
+                    await db.SaveChangesAsync();
+                    return new OkObjectResult(room);
+                }
+
+                
             }
             catch (Exception ex)
             {

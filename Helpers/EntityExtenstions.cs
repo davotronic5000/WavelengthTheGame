@@ -31,5 +31,13 @@ namespace WavelengthTheGame.Helpers
 
             return returnValue;
         }
+
+        public static RoomCardEntity ToRoomCardEntity(this CardEntity card)
+        => new RoomCardEntity{
+            Id = card.Id,
+            LeftValue = card.LeftValue,
+            RightValue = card.RightValue,
+            IsCustom = card.IsCustom
+        };
     }
 }
