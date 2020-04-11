@@ -14,7 +14,8 @@ namespace WavelengthTheGame.Entities
     }
 
     public enum LeftRightGuess 
-    {          
+    {    
+        None = 0,      
         Left = 1,
         Right = 2
     }
