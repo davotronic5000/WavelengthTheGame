@@ -1,12 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ThemeProvider } from "emotion-theming";
+import { theme } from "theme";
 import * as serviceWorker from "./serviceWorker";
+import GlobalPage from "theme/global";
 
 ReactDOM.render(
     <React.StrictMode>
-        <div>Hello</div>
+        <ThemeProvider theme={theme}>
+            <GlobalPage>
+                <div>Hello</div>
+            </GlobalPage>
+        </ThemeProvider>
     </React.StrictMode>,
-    document.getElementById("root")
+    document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change
