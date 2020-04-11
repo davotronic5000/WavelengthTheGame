@@ -78,5 +78,35 @@ namespace WavelengthTheGame.Functions
                 throw;
             }
         }
+
+        [FunctionName("NextPhaseHttpTrigger")]
+        public static async Task<IActionResult> NextPhase(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "{roomId}/nextPhase")] HttpRequest request,
+            string roomId,
+            ILogger log
+        )
+        {
+            try
+            {
+                using (CosmosContext db = new CosmosContext)
+                {
+                    RoomEntity room = db.Rooms.First(e => e.Id.Equals(roomId));
+                    if (room.GamePhase == GamePhases.ScoringPhase)
+                    {
+                        return new OkObjectResult("Room is already on Scoring Phase");
+                    }
+                    room.GamePhase = (GamePhases)((int)room.GamePhase++);
+                    await db.SaveChangesAsync();
+
+                    return new OkObjectResult(room);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.LogError(new EventId(), ex, ex.FullMessage());
+                throw;
+            }
+
+        }
     }
 }
