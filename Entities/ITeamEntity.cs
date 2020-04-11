@@ -5,5 +5,7 @@ namespace WavelengthTheGame.Entities
     {
          int Score {get;set;}
          List<PlayerEntity> Players {get;set;}
+         int TargetGuess {get;set;}
+         LeftRightGuess LeftRightGuess {get;set;}
     }
 }

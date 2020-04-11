@@ -27,9 +27,18 @@ namespace WavelengthTheGame.Functions
                 using (CosmosContext db = new CosmosContext())
                 {
                     RoomEntity room = db.Rooms.First(e => e.Id.Equals(roomId));
-                    room.isStarted = !room.isStarted;
-                    await db.SaveChangesAsync();
-                    return new OkObjectResult(room);
+                    if (room.IsStarted == true)
+                    {
+                        room.IsStarted = true;
+                        PlayerEntity randomPlayer = room.Team1.Players.Random(1).First();
+                        randomPlayer.IsClueGiver = true;
+                        randomPlayer.HasBeenClueGiver = true;
+                        room.CurrentTarget = new Random().Next(0, 180);
+                        
+                        await db.SaveChangesAsync();                                                
+                    }   
+
+                    return new OkObjectResult(room);                
                 }
             }
             catch (Exception ex)

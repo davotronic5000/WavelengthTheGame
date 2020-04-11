@@ -8,6 +8,8 @@ namespace WavelengthTheGame.Entities
         public string Name {get;set;}
         public bool IsOwner {get;set;}
         public bool IsController {get;set;}
+        public bool IsClueGiver {get;set;}
+        public bool HasBeenClueGiver {get;set;}
         public DateTime LastAction {get;set;}
     }
 }
