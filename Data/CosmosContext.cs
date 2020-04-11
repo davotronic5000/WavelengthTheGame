@@ -35,7 +35,13 @@ namespace WavelengthTheGame.Data
                         .OwnsMany(e => e.Players);
             modelBuilder.Entity<RoomEntity>()
                         .OwnsOne(e => e.Team2)
-                        .OwnsMany(e => e.Players);                    
+                        .OwnsMany(e => e.Players); 
+            modelBuilder.Entity<RoomEntity>()
+                        .OwnsOne(e => e.CurrentCard);
+            modelBuilder.Entity<RoomEntity>()
+                        .OwnsMany(e => e.CustomCards);
+            modelBuilder.Entity<RoomEntity>()
+                        .OwnsMany(e => e.UsedCards);
         }
     }
 }

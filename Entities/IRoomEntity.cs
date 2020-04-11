@@ -7,10 +7,10 @@ namespace WavelengthTheGame.Entities
     {
          TeamEntity Team1 {get;set;}
          TeamEntity Team2 {get;set;}
-         CardEntity CurrentCard {get;set;}
+         RoomCardEntity CurrentCard {get;set;}
          int CurrentTarget {get;set;}
-         IEnumerable<CardEntity> UsedCards {get;set;}
-         IEnumerable<CardEntity> CustomCards {get;set;}
+         List<RoomCardEntity> UsedCards {get;set;}
+         List<RoomCardEntity> CustomCards {get;set;}
          DateTime CreatedDate {get;set;}
     }
 }
