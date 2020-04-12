@@ -1,4 +1,3 @@
-using System.Net;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -88,7 +87,7 @@ namespace WavelengthTheGame.Functions
         {
             try
             {
-                using (CosmosContext db = new CosmosContext)
+                using (CosmosContext db = new CosmosContext())
                 {
                     RoomEntity room = db.Rooms.First(e => e.Id.Equals(roomId));
                     if (room.GamePhase == GamePhases.ScoringPhase)
