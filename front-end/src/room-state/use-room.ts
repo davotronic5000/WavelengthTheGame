@@ -25,7 +25,7 @@ const defaultRoom: Room = {
         id: "2a273a39-d718-4a67-ad09-512654a375e6",
     },
     targetGuess: 0,
-    leftRightGuess: 0,
+    leftRightGuess: "none",
     currentCard: null,
     currentTarget: 0,
     givenClue: null,
@@ -33,7 +33,7 @@ const defaultRoom: Room = {
     customCards: [],
     createdDate: "2020-04-25T18:02:32.3005853Z",
     isStarted: false,
-    gamePhase: 0,
+    gamePhase: "none",
     id: "IJILK",
 };
 
