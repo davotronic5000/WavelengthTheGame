@@ -21,14 +21,19 @@ export interface Room {
     team1: Team;
     team2: Team;
     targetGuess: number;
-    leftRightGuess: number;
+    leftRightGuess: "left" | "right" | "none";
     currentCard: Card | null;
     currentTarget: number;
     usedCards: Card[];
     customCards: Card[];
     createdDate: string;
     isStarted: boolean;
-    gamePhase: number;
+    gamePhase:
+        | "none"
+        | "cluePhase"
+        | "teamPhase"
+        | "leftRightPhase"
+        | "scoringPhase";
     givenClue: string | null;
     id: string;
 }
