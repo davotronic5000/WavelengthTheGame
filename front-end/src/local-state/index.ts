@@ -1,3 +1,3 @@
-import useLocalState from "./use-local-state";
+import useLocalPlayerState from "./use-local-player-state";
 
-export default useLocalState;
+export default useLocalPlayerState;
