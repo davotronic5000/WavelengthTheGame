@@ -4,12 +4,13 @@ import { ThemeProvider } from "emotion-theming";
 import { theme } from "theme";
 import * as serviceWorker from "./serviceWorker";
 import GlobalPage from "theme/global";
+import ViewController from "view-controller";
 
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <GlobalPage>
-                <div>Hello</div>
+                <ViewController />
             </GlobalPage>
         </ThemeProvider>
     </React.StrictMode>,
