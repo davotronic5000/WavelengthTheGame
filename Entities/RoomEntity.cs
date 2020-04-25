@@ -19,6 +19,8 @@ namespace WavelengthTheGame.Entities
         public DateTime CreatedDate {get;set;}
         public bool IsStarted {get;set;}
         public GamePhases GamePhase {get; set;}
+        public int TargetGuess {get;set;}
+        public LeftRightGuess LeftRightGuess {get;set;}
     }
 
     public enum GamePhases 
@@ -28,5 +30,12 @@ namespace WavelengthTheGame.Entities
         TeamPhase = 2,
         LeftRightPhase = 3,
         ScoringPhase = 4
+    }
+
+    public enum LeftRightGuess 
+    {    
+        None = 0,      
+        Left = 1,
+        Right = 2
     }
 }

@@ -33,6 +33,7 @@ namespace WavelengthTheGame.Functions
                         randomPlayer.IsClueGiver = true;
                         randomPlayer.HasBeenClueGiver = true;
                         room.CurrentTarget = new Random().Next(0, 180);
+                        room.Team1.IsActive = true;
                         room.GamePhase = GamePhases.CluePhase;
 
                         await db.SaveChangesAsync();                                                
@@ -62,10 +63,8 @@ namespace WavelengthTheGame.Functions
                 {
                     RoomEntity room = db.Rooms.First(e => e.Id.Equals(roomId));
                     room.CurrentTarget = target;
-                    room.Team1.LeftRightGuess = LeftRightGuess.None;
-                    room.Team1.TargetGuess = 0;
-                    room.Team2.LeftRightGuess = LeftRightGuess.None;
-                    room.Team2.TargetGuess = 0;
+                    room.LeftRightGuess = LeftRightGuess.None;
+                    room.TargetGuess = 0;
                     room.GamePhase = GamePhases.CluePhase;
                     await db.SaveChangesAsync();
                     return new OkObjectResult(room);

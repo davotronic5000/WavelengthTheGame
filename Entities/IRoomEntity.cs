@@ -14,5 +14,7 @@ namespace WavelengthTheGame.Entities
          DateTime CreatedDate {get;set;}
          bool IsStarted {get;set;}
          GamePhases GamePhase {get;set;}
+        int TargetGuess {get;set;}
+        LeftRightGuess LeftRightGuess {get;set;}
     }
 }
