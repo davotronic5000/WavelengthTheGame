@@ -6,10 +6,10 @@ import { localStateSelectors } from "local-state";
 
 const ViewController: ComponentType = () => {
     const player = useContext(LocalPlayerContext);
-    if (localStateSelectors.hasName(player)) {
+    if (!localStateSelectors.hasName(player)) {
         return <ChooseNameScreen />;
     }
-    if (localStateSelectors.hasCurrentRoomCode(player)) {
+    if (!localStateSelectors.hasCurrentRoomCode(player)) {
         return (
             <div>
                 <div>Enter a room code</div>
