@@ -1,12 +1,13 @@
-import React, { Fragment, ComponentType } from "react";
+import React, { ComponentType } from "react";
 import { Global } from "@emotion/core";
 import css from "@emotion/css/macro";
 import emotionNormalize from "emotion-normalize";
-import { Theme } from "theme";
+import { Theme, theme } from "theme";
+import { ThemeProvider } from "emotion-theming";
 
 const GlobalPage: ComponentType = ({ children }) => {
     return (
-        <Fragment>
+        <ThemeProvider theme={theme}>
             <Global
                 styles={css`
                     ${emotionNormalize}
@@ -22,7 +23,7 @@ const GlobalPage: ComponentType = ({ children }) => {
                 })}
             />
             {children}
-        </Fragment>
+        </ThemeProvider>
     );
 };
 
