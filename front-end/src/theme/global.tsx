@@ -19,7 +19,9 @@ const GlobalPage: ComponentType = ({ children }) => {
                     "*": { boxSizing: "border-box" },
                     html: {
                         backgroundColor: theme.colors.greyLight,
-                        fontFamily: "'Cabin', sans-serif",
+                        fontFamily: theme.fonts.body,
+                        fontWeight: theme.fontWeights.body,
+                        fontSize: theme.fontSizes[2],
                         color: theme.colors.dark,
                     },
                 })}

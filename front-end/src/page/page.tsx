@@ -1,7 +1,14 @@
 import React, { ComponentType } from "react";
+import { Box } from "rebass";
+import Header from "./header";
 
 const Page: ComponentType = ({ children }) => {
-    return <div>{children}</div>;
+    return (
+        <Box p={3}>
+            <Header />
+            {children}
+        </Box>
+    );
 };
 
 export default Page;
