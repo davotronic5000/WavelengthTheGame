@@ -26,6 +26,7 @@ const PlayerInformation: ComponentType = () => {
                     alignItems: "center",
                     justifyContent: "space-between",
                     mx: -3,
+                    mb: 3,
                     p: 3,
                     bg: "greyMedium",
                 }}
@@ -33,7 +34,7 @@ const PlayerInformation: ComponentType = () => {
                 <Box mr={2}>
                     Hello {name}!
                     {hasCurrentRoomCode
-                        ? `You are currently playing in room ${currentRoomCode}. Have fun! 🕵`
+                        ? ` You are currently playing in room ${currentRoomCode}. Have fun! 🕵`
                         : ""}
                 </Box>
                 <Button variant="small" onClick={changeName}>
