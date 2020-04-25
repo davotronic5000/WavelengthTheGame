@@ -5,11 +5,7 @@ import useLocalPlayer, { localStateSelectors } from "local-state";
 const ChooseNameScreen: ComponentType = () => {
     const player = useLocalPlayer();
     const updateName = localStateSelectors.updateName(player);
-    return (
-        <div>
-            <InputPlusSubmit name="name" onSubmit={updateName} />
-        </div>
-    );
+    return <InputPlusSubmit name="name" onSubmit={updateName} />;
 };
 
 export default ChooseNameScreen;
