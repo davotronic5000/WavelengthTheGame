@@ -7,12 +7,10 @@ const useLocalPlayerState = () => {
     const [currentRoomCode, updateCurrentRoomCode] = useLocalState(
         localStorageRoom,
     );
-    const player = useMemo(() => ({ name, currentRoomCode }), [
-        name,
-        currentRoomCode,
-        updateName,
-        updateCurrentRoomCode,
-    ]);
+    const player = useMemo(
+        () => ({ name, currentRoomCode, updateName, updateCurrentRoomCode }),
+        [name, currentRoomCode, updateName, updateCurrentRoomCode],
+    );
     return player;
 };
 
