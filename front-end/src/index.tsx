@@ -7,11 +7,11 @@ import { LocalPlayerContextProvider } from "local-state";
 
 ReactDOM.render(
     <React.StrictMode>
-        <GlobalPage>
-            <LocalPlayerContextProvider>
+        <LocalPlayerContextProvider>
+            <GlobalPage>
                 <ViewController />
-            </LocalPlayerContextProvider>
-        </GlobalPage>
+            </GlobalPage>
+        </LocalPlayerContextProvider>
     </React.StrictMode>,
     document.getElementById("root"),
 );

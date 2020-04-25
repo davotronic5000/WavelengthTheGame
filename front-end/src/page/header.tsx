@@ -1,5 +1,6 @@
 import React, { ComponentType } from "react";
 import { Box, Heading } from "rebass";
+import { PlayerInformation } from "components";
 
 const Header: ComponentType = () => {
     return (
@@ -14,6 +15,7 @@ const Header: ComponentType = () => {
             >
                 Wavelength
             </Heading>
+            <PlayerInformation />
         </Box>
     );
 };

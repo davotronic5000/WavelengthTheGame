@@ -14,7 +14,14 @@ const InputPlusSubmit: ComponentType<{
                 e.preventDefault();
                 onSubmit(value);
             }}
-            sx={{ maxWidth: 400, mx: "auto" }}
+            sx={{
+                maxWidth: 450,
+                mx: "auto",
+                bg: "greyMedium",
+                p: 3,
+                border: "solid",
+                borderRadius: "default",
+            }}
         >
             <Label htmlFor={name} sx={{ fontWeight: "bold" }}>
                 What is your name?
@@ -24,7 +31,12 @@ const InputPlusSubmit: ComponentType<{
                     name={name}
                     value={value}
                     onChange={(e) => updateValue(e.target.value)}
-                    sx={{ mr: 1, p: 2 }}
+                    sx={{
+                        mr: 2,
+                        p: 2,
+                        borderColor: "primaryDark",
+                        bg: "greyLight",
+                    }}
                 />{" "}
                 <Button sx={{ flexShrink: 0 }}>Submit</Button>
             </Flex>
