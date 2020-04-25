@@ -4,6 +4,7 @@ import css from "@emotion/css/macro";
 import emotionNormalize from "emotion-normalize";
 import { Theme, theme } from "theme";
 import { ThemeProvider } from "emotion-theming";
+import Page from "page";
 
 const GlobalPage: ComponentType = ({ children }) => {
     return (
@@ -23,7 +24,7 @@ const GlobalPage: ComponentType = ({ children }) => {
                     },
                 })}
             />
-            {children}
+            <Page>{children}</Page>
         </ThemeProvider>
     );
 };
