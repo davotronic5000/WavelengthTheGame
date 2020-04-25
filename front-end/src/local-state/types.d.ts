@@ -1,4 +1,4 @@
-export interface Player {
+export interface LocalPlayer {
     name: string;
     currentRoomCode: string;
     updateName: (newName: string) => void;
