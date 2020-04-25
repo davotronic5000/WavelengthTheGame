@@ -1,8 +1,6 @@
-import useLocalPlayerState from "./use-local-player-state";
+import useLocalPlayer from "./use-local-player";
 import * as localStateSelectors from "./selectors";
-import LocalPlayerContextProvider, {
-    LocalPlayerContext,
-} from "./local-player-context";
+import LocalPlayerContextProvider from "./local-player-context";
 
-export { localStateSelectors, LocalPlayerContext, LocalPlayerContextProvider };
-export default useLocalPlayerState;
+export { localStateSelectors, LocalPlayerContextProvider };
+export default useLocalPlayer;

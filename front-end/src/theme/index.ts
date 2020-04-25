@@ -2,6 +2,15 @@ import styled, { CreateStyled } from "@emotion/styled/macro";
 
 export const theme = {
     breakpoints: ["600px", "900px", "1200px", "1800px"],
+    buttons: {
+        primary: {
+            fontSize: 2,
+            fontWeight: "bold",
+            bg: "primaryDark",
+            color: "greyLight",
+            borderRadius: "default",
+        },
+    },
     colors: {
         dark: "#493843",
         primaryDark: "#556869",
@@ -23,6 +32,9 @@ export const theme = {
     lineHeights: {
         body: 1.5,
         heading: 1.25,
+    },
+    radii: {
+        default: 2,
     },
     space: [0, 4, 8, 16, 24, 32, 40, 48, 56, 64],
 };
