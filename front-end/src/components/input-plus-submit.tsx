@@ -4,8 +4,9 @@ import { Label, Input } from "@rebass/forms";
 
 const InputPlusSubmit: ComponentType<{
     name: string;
+    label: string;
     onSubmit: (value: string) => void;
-}> = ({ name, onSubmit }) => {
+}> = ({ name, label, onSubmit }) => {
     const [value, updateValue] = useState("");
     return (
         <Box
@@ -24,21 +25,23 @@ const InputPlusSubmit: ComponentType<{
             }}
         >
             <Label htmlFor={name} sx={{ fontWeight: "bold" }}>
-                What is your name?
+                {label}
             </Label>
-            <Flex>
+            <Flex flexDirection={["column", "row"]}>
                 <Input
                     name={name}
                     value={value}
                     onChange={(e) => updateValue(e.target.value)}
                     sx={{
-                        mr: 2,
+                        mr: [0, 2],
+                        mb: [2, 0],
                         p: 2,
                         borderColor: "primaryDark",
                         bg: "greyLight",
+                        minWidth: "200px",
                     }}
                 />{" "}
-                <Button sx={{ flexShrink: 0 }}>Submit</Button>
+                <Button sx={{ flexShrink: 0, flexGrow: [1, 0] }}>Submit</Button>
             </Flex>
         </Box>
     );
