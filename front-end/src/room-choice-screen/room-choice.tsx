@@ -1,7 +1,12 @@
 import React, { ComponentType } from "react";
+import JoinRoom from "./join-room";
 
 const RoomChoice: ComponentType = () => {
-    return <div>Enter a room code | Create a new room</div>;
+    return (
+        <div>
+            <JoinRoom /> | Create a new room
+        </div>
+    );
 };
 
 export default RoomChoice;
