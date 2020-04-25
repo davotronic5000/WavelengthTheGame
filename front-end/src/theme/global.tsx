@@ -23,6 +23,7 @@ const GlobalPage: ComponentType = ({ children }) => {
                         fontWeight: theme.fontWeights.body,
                         fontSize: theme.fontSizes[2],
                         color: theme.colors.dark,
+                        lineHeight: theme.lineHeights.body,
                     },
                 })}
             />

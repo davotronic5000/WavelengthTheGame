@@ -1,6 +1,6 @@
 import React, { createContext, ComponentType } from "react";
 import { defaultPlayer } from "./constants";
-import useLocalPlayerState from "local-state";
+import useLocalPlayerState from "./use-local-player-state";
 
 export const LocalPlayerContext = createContext(defaultPlayer);
 

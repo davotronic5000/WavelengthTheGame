@@ -1,13 +1,14 @@
-import React, { ComponentType, useContext } from "react";
-import { LocalPlayerContext } from "local-state";
+import React, { ComponentType } from "react";
+import useLocalPlayer, { localStateSelectors } from "local-state";
+import ChooseNameScreen from "choose-name-screen";
 import RoomController from "./room-controller";
 
 const ViewController: ComponentType = () => {
-    const player = useContext(LocalPlayerContext);
-    if (!player.name.length) {
-        return <div>What is your name?</div>;
+    const player = useLocalPlayer();
+    if (!localStateSelectors.hasName(player)) {
+        return <ChooseNameScreen />;
     }
-    if (!player.currentRoomCode.length) {
+    if (!localStateSelectors.hasCurrentRoomCode(player)) {
         return (
             <div>
                 <div>Enter a room code</div>
