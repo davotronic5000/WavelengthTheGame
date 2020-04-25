@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 
-const useLocalState = (localStorageKey: string) => {
+const useLocalState = (
+    localStorageKey: string,
+): [string, Dispatch<SetStateAction<string>>] => {
     const [value, updateValue] = useState(
         localStorage.getItem(localStorageKey) || "",
     );
