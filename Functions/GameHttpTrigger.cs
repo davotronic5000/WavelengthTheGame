@@ -106,5 +106,31 @@ namespace WavelengthTheGame.Functions
             }
 
         }
+    
+        [FunctionName("SetTargetGuessHttpTrigger")]
+        public static async Task<IActionResult> SetTargetGuess(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "{roomId}/setTargetGuess/{guess:int}")] HttpRequest request,
+            string roomId,
+            int guess,
+            ILogger log
+        )
+        {
+            try
+            {
+                using (CosmosContext db = new CosmosContext())
+                {
+                    RoomEntity room = db.Rooms.First(e => e.Id.Equals(roomId));
+                    room.TargetGuess = guess;
+                    await db.SaveChangesAsync();
+
+                    return new OkObjectResult(room);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.LogError(new EventId(), ex, ex.FullMessage());
+                throw;
+            }
+        }
     }
 }

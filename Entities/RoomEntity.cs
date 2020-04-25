@@ -1,5 +1,8 @@
+using System.Runtime.Serialization;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 namespace WavelengthTheGame.Entities
 {
     public class RoomEntity : BaseEntity, IRoomEntity
@@ -23,19 +26,29 @@ namespace WavelengthTheGame.Entities
         public LeftRightGuess LeftRightGuess {get;set;}
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GamePhases 
     {
+        [EnumMember(Value = "none")]
         None = 0,
+        [EnumMember(Value = "cluePhase")]
         CluePhase = 1,
+        [EnumMember(Value = "teamPhase")]
         TeamPhase = 2,
+        [EnumMember(Value = "leftRightPhase")]
         LeftRightPhase = 3,
+        [EnumMember(Value = "scoringPhase")]
         ScoringPhase = 4
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum LeftRightGuess 
     {    
-        None = 0,      
+        [EnumMember(Value = "none")]
+        None = 0,  
+        [EnumMember(Value = "left")]    
         Left = 1,
+        [EnumMember(Value = "right")]
         Right = 2
     }
 }
