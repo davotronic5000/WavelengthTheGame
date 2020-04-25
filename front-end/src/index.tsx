@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import GlobalPage from "theme/global";
 import ViewController from "view-controller";
+import { LocalPlayerContextProvider } from "local-state";
 
 ReactDOM.render(
     <React.StrictMode>
         <GlobalPage>
-            <ViewController />
+            <LocalPlayerContextProvider>
+                <ViewController />
+            </LocalPlayerContextProvider>
         </GlobalPage>
     </React.StrictMode>,
     document.getElementById("root"),

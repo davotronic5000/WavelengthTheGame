@@ -1,9 +1,9 @@
-import React, { ComponentType } from "react";
-import useLocalPlayerState from "local-state/use-local-player-state";
+import React, { ComponentType, useContext } from "react";
+import { LocalPlayerContext } from "local-state";
 import RoomController from "./room-controller";
 
 const ViewController: ComponentType = () => {
-    const player = useLocalPlayerState();
+    const player = useContext(LocalPlayerContext);
     if (!player.name.length) {
         return <div>What is your name?</div>;
     }
