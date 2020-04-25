@@ -1,12 +1,10 @@
-import { LocalState } from "./types";
-import { possiblyUndefinedValueExists } from "utils";
+import { LocalPlayer } from "./types";
 
-export const getPreferredName = (localState: LocalState) =>
-    localState.preferredName;
-export const hasPreferredName = (localState: LocalState) =>
-    possiblyUndefinedValueExists(getPreferredName(localState));
+export const getName = (localState: LocalPlayer) => localState.name;
+export const hasPreferredName = (localState: LocalPlayer) =>
+    getName(localState).length;
 
-export const getCurrentGame = (localState: LocalState) =>
-    localState.currentGame;
-export const hasCurrentGame = (localState: LocalState) =>
-    possiblyUndefinedValueExists(getCurrentGame(localState));
+export const getCurrentRoomCode = (localState: LocalPlayer) =>
+    localState.currentRoomCode;
+export const hasCurrentRoomCode = (localState: LocalPlayer) =>
+    getCurrentRoomCode(localState).length;
