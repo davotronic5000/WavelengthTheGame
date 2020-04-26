@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider } from "emotion-theming";
-import { theme } from "theme";
 import * as serviceWorker from "./serviceWorker";
 import GlobalPage from "theme/global";
+import ViewController from "view-controller";
+import { LocalPlayerContextProvider } from "local-state";
 
 ReactDOM.render(
     <React.StrictMode>
-        <ThemeProvider theme={theme}>
+        <LocalPlayerContextProvider>
             <GlobalPage>
-                <div>Hello</div>
+                <ViewController />
             </GlobalPage>
-        </ThemeProvider>
+        </LocalPlayerContextProvider>
     </React.StrictMode>,
     document.getElementById("root"),
 );

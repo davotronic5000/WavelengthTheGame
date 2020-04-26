@@ -1,12 +1,14 @@
-import React, { Fragment, ComponentType } from "react";
+import React, { ComponentType } from "react";
 import { Global } from "@emotion/core";
 import css from "@emotion/css/macro";
 import emotionNormalize from "emotion-normalize";
-import { Theme } from "theme";
+import { Theme, theme } from "theme";
+import { ThemeProvider } from "emotion-theming";
+import Page from "page";
 
 const GlobalPage: ComponentType = ({ children }) => {
     return (
-        <Fragment>
+        <ThemeProvider theme={theme}>
             <Global
                 styles={css`
                     ${emotionNormalize}
@@ -16,13 +18,17 @@ const GlobalPage: ComponentType = ({ children }) => {
                 styles={(theme: Theme) => ({
                     "*": { boxSizing: "border-box" },
                     html: {
-                        fontFamily: "'Cabin', sans-serif",
-                        color: theme.colors.text,
+                        backgroundColor: theme.colors.greyLight,
+                        fontFamily: theme.fonts.body,
+                        fontWeight: theme.fontWeights.body,
+                        fontSize: theme.fontSizes[2],
+                        color: theme.colors.dark,
+                        lineHeight: theme.lineHeights.body,
                     },
                 })}
             />
-            {children}
-        </Fragment>
+            <Page>{children}</Page>
+        </ThemeProvider>
     );
 };
 
