@@ -4,6 +4,7 @@ namespace WavelengthTheGame.Entities
     public interface ITeamEntity : IBaseEntity
     {
          int Score {get;set;}
+         bool IsActive {get;set;}
          List<PlayerEntity> Players {get;set;}
     }
 }

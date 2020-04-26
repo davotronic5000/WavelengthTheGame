@@ -8,6 +8,10 @@ namespace WavelengthTheGame.Entities
             Players = new List<PlayerEntity>();
         }
         public int Score {get;set;}
+        public bool IsActive {get;set;}
         public List<PlayerEntity> Players {get;set;}
     }
+
+    
 }
+
