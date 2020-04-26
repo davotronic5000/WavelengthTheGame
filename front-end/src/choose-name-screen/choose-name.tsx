@@ -6,9 +6,11 @@ const ChooseNameScreen: ComponentType = () => {
     const player = useLocalPlayer();
     const updateName = localStateSelectors.updateName(player);
     return (
-        <div>
-            <InputPlusSubmit name="name" onSubmit={updateName} />
-        </div>
+        <InputPlusSubmit
+            name="name"
+            onSubmit={updateName}
+            label="What is your name?"
+        />
     );
 };
 
