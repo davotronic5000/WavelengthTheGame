@@ -1,10 +1,11 @@
 import React, { ComponentType } from "react";
 import JoinRoom from "./join-room";
+import CreateRoom from "./create-room";
 
 const RoomChoice: ComponentType = () => {
     return (
         <div>
-            <JoinRoom /> | Create a new room
+            <JoinRoom /> <CreateRoom />
         </div>
     );
 };
