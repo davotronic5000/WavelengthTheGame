@@ -1,29 +1,27 @@
 import React, { ComponentType, useState } from "react";
-import { Box, Flex, Button } from "rebass";
+import { Flex, Button } from "rebass";
 import { Label, Input } from "@rebass/forms";
+import Panel from "./panel";
+import PanelHeading from "./panel-heading";
 
 const InputPlusSubmit: ComponentType<{
     name: string;
     label: string;
+    title?: string;
     onSubmit: (value: string) => void;
-}> = ({ name, label, onSubmit }) => {
+}> = ({ name, label, onSubmit, title }) => {
     const [value, updateValue] = useState("");
     return (
-        <Box
+        <Panel
             as="form"
             onSubmit={(e) => {
                 e.preventDefault();
                 onSubmit(value);
             }}
-            sx={{
-                maxWidth: 450,
-                mx: "auto",
-                bg: "greyMedium",
-                p: 3,
-                border: "solid",
-                borderRadius: "default",
-            }}
         >
+            {typeof title !== "undefined" && (
+                <PanelHeading>{title}</PanelHeading>
+            )}
             <Label htmlFor={name} sx={{ fontWeight: "bold" }}>
                 {label}
             </Label>
@@ -43,7 +41,7 @@ const InputPlusSubmit: ComponentType<{
                 />{" "}
                 <Button sx={{ flexShrink: 0, flexGrow: [1, 0] }}>Submit</Button>
             </Flex>
-        </Box>
+        </Panel>
     );
 };
 
